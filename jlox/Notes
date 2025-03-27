@@ -1,0 +1,67 @@
+I haven't programmed in java since high school and that was with eclipse.
+
+I want everything to be a Makefile for simplicity. So the question is how do I make a package?
+
+our package is:
+com.craftinginterpresters.lox
+
+Our basic directory stucture needs to be setup as follows:
+
+jlox/
+|--src/
+|  |
+|  +---com/
+|      |
+|      +----craftinginterpreters/
+|           |
+|           +---lox/
+|               |
+|               +-- Lox.java
+|               +-- Scanner.java
+|               +-- Parser.java
+|               +-- (ohter classes as needed)
+|
+|-- bin/ (Output)
+|
+| -- (Anything else)
+
+ls src/com/craftinginterpresters/lox/Lox.java 
+src/com/craftinginterpresters/lox/Lox.java
+
+
+# Makefile
+#====================================
+# This worked when HelloWorld.java was in 
+# /src/HelloWorld.java
+#====================================
+
+JAVAC=javac -d bin
+SRC_DIR=src
+BIN_DIR=bin
+CLASSES=$(BIN_DIR)/HelloWorld.class
+
+default: classes
+
+classes: $(CLASSES)
+
+$(BIN_DIR)/HelloWorld.class: $(SRC_DIR)/HelloWorld.java
+	$(JAVAC) $<
+
+# java HelloWorld and java HelloWorld.class failed
+# because of the java class path. Java files are not 
+# expected to be ran from the directory they're found in.
+# here bin is in the class path and that allows it to work.
+# also don't include the .class
+run: classes
+	java -cp $(BIN_DIR) HelloWorld
+
+clean: 
+	rm -f $(BIN_DIR)/*.class
+
+
+# Makefile v2
+#====================================
+# Setup the make file to build jlox
+#====================================
+
+

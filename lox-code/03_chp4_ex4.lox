@@ -1,0 +1,5 @@
+// This code if it works should print the tokens
+// for print "test" and after. If it doesn't itt means 
+// the rest of the line after /* is being consumed and
+// we don't want this.
+for (var i = 0; i <= 6; i = i + 1) { print "value of i:" print i; /* lfdf */ print "test" } print "Goodbye"; /* ldfs \n */ print "Hello";

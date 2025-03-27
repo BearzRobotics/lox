@@ -1,0 +1,102 @@
+// part of chapter 3 exercies
+// fuck no way to get input
+
+// like in c we cannot call a function before it is declared
+// main();
+
+// lets create a main function
+// loxs does not require this
+fun main() {
+    var hello = "Hello";
+    var world; // this should be nil
+
+    if (world == nil) {
+        world = "world";
+    }
+
+    print hello + world;
+
+    print "d";
+
+    // I really like this
+    // why did it lett me do this and not
+    // with main?
+    var div = bearz(10, 12);
+
+    print div;
+    
+    // init is auto called. As this erroed out
+    //var newChar = Character();
+
+    // Even though I created a Character class it errors out if I pass in 7
+    // args for the name.
+    var newChar = Character(12, 15, 8, 4, 0, 18);
+    newChar.getName("Fenrir");
+    newChar.printStats();
+
+    // can I just call into Character?
+    // NO
+    //newChar.printCharName();
+
+    for (var i = 0; i <= 6; i = i + 1 ) {
+        // Doesn't work as oprande must be two string or two numdbers
+        //print "Value of I: " + i;
+        print "Value of I:";
+        print i;
+
+        /* lfld */
+    }
+
+}
+
+fun bearz(a, b){
+    return a / b;
+}
+
+// IN reality these are backwards. Oh well.
+
+// bases class or supper class
+// I don't like how these work! -- 
+class Stats {
+    init(str, int, wis, dex, con, cha) {
+        this.str = str;
+        this.int = int;
+        this.wis = wis;
+        this.dex = dex;
+        this.con = con;
+        this.cha = cha;
+    }
+
+    printStats() {
+        // print each on newline
+        print this.str;
+        print this.int;
+        print this.wis;
+        print this.dex;
+        print this.con;
+        print this.cha;
+    }
+
+    // how do I set the name for Character?
+    getName(name) {
+        return name;
+    }
+
+}
+
+// Character is the derived class.
+class Character < Stats{
+    int(name, str, int, wis, dex, con, cha) {
+        super.init(str, int, wis, dex, con, cha);
+        this.name = super.getName();
+    }
+
+
+    printCharName() {
+        print this.name;
+    }
+
+}
+
+
+main();
